@@ -11,10 +11,10 @@ def add_material():
     if material_id in products:
         print("material ID already exists.")
         return
-    name = input("Enter material Name: ")
-    price = float(input("Enter Price: "))
-    quantity = int(input("Enter Quantity: "))
-    materials[material_id] = {'name': name, 'price': price, 'quantity': quantity}
+    type = input("Enter material Type: ")
+    grade = float(input("Grade: "))
+    supplier = int(input("Enter Supplier: "))
+    materials[material_id] = {'type': type, 'grade': grade, 'supplier': supplier}
     print("material added successfully.\n")
 
 # View all products
@@ -24,7 +24,7 @@ def view_material():
         return
     print("\n--- material List ---")
     for pid, info in materials.items():
-        print(f"ID: {pid}, Name: {info['name']}, Price: {info['price']}, Quantity: {info['quantity']}")
+        print(f"ID: {pid}, Name: {info['type']}, grade: {info['grade']}, supplier: {info['supplier']}")
     print()
 
 # Update product
