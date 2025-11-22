@@ -33,45 +33,45 @@ def update_material():
     if material_id not in materials:
         print("material not found.\n")
         return
-    name = input("Enter New Product Name: ")
+    name = input("Enter New material Name: ")
     price = float(input("Enter New Price: "))
     quantity = int(input("Enter New Quantity: "))
-    products[product_id] = {'name': name, 'price': price, 'quantity': quantity}
+   material[material_id] = {'name': name, 'price': price, 'quantity': quantity}
     print("Product updated successfully.\n")
 
 # Delete product
 def delete_material():
-    product_id = input("Enter Product ID to delete: ")
-    if product_id in products:
-        del products[product_id]
-        print("Product deleted successfully.\n")
+    material_id = input("Enter material ID to delete: ")
+    if material_id in materials:
+        del material[material_id]
+        print("material deleted successfully.\n")
     else:
-        print("Product not found.\n")
+        print("material not found.\n")
 
 # Purchase/Bill generation
 def purchase_material():
-    if not products:
-        print("No products available for purchase.\n")
+    if not material:
+        print("No materials available for purchase.\n")
         return
 
     cart = {}
     total = 0
 
     while True:
-        product_id = input("Enter Product ID to purchase (or 'done' to finish): ")
-        if product_id.lower() == 'done':
+        material_id = input("Enter material ID to purchase (or 'done' to finish): ")
+        if material_id.lower() == 'done':
             break
-        if product_id not in products:
-            print("Invalid Product ID.")
+        if material_id not in material:
+            print("Invalid material ID.")
             continue
         quantity = int(input("Enter quantity: "))
-        if quantity > products[product_id]['quantity']:
+        if quantity > materials[material_id]['quantity']:
             print("Insufficient stock.")
             continue
-        price = products[product_id]['price']
+        price = materials[material_id]['price']
         total += price * quantity
-        products[product_id]['quantity'] -= quantity
-        cart[product_id] = {'name': products[product_id]['name'], 'quantity': quantity, 'price': price}
+        materials[material_id]['quantity'] -= quantity
+        cart[material_id] = {'name': materials[material_id]['name'], 'quantity': quantity, 'price': price}
 
     # Bill
     print("\n----- Bill -----")
@@ -84,24 +84,24 @@ def purchase_material():
 def menu():
     while True:
         print("=== Grocery Store Management ===")
-        print("1. Add Product")
-        print("2. View Products")
-        print("3. Update Product")
-        print("4. Delete Product")
-        print("5. Purchase Products")
+        print("1. Add materials")
+        print("2. View materials")
+        print("3. Update material")
+        print("4. Delete material")
+        print("5. Purchase materials")
         print("6. Exit")
         choice = input("Enter your choice (1-6): ")
 
         if choice == '1':
-            add_product()
+            add_materials()
         elif choice == '2':
-            view_products()
+            view_materials()
         elif choice == '3':
-            update_product()
+            update_materials()
         elif choice == '4':
-            delete_product()
+            delete_materials()
         elif choice == '5':
-            purchase_products()
+            purchase_materials()
         elif choice == '6':
             print("Exiting system. THANK YOU VISIT AGAIN !")
             sys.exit()
