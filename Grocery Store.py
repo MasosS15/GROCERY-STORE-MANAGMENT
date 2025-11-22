@@ -1,37 +1,37 @@
-# Grocery Store Management System
+# Welding materials and stock Management System
 
 import sys
 
 # In-memory store for products
-products = {}
+Materials = {}
 
 # Add product
-def add_product():
-    product_id = input("Enter Product ID: ")
-    if product_id in products:
-        print("Product ID already exists.")
+def add_material():
+    material_id = input("Enter Material ID: ")
+    if material_id in products:
+        print("material ID already exists.")
         return
-    name = input("Enter Product Name: ")
+    name = input("Enter material Name: ")
     price = float(input("Enter Price: "))
     quantity = int(input("Enter Quantity: "))
-    products[product_id] = {'name': name, 'price': price, 'quantity': quantity}
-    print("Product added successfully.\n")
+    materials[material_id] = {'name': name, 'price': price, 'quantity': quantity}
+    print("material added successfully.\n")
 
 # View all products
-def view_products():
-    if not products:
-        print("No products in inventory.\n")
+def view_material():
+    if not materials:
+        print("No materials in inventory.\n")
         return
-    print("\n--- Product List ---")
-    for pid, info in products.items():
+    print("\n--- material List ---")
+    for pid, info in materials.items():
         print(f"ID: {pid}, Name: {info['name']}, Price: {info['price']}, Quantity: {info['quantity']}")
     print()
 
 # Update product
-def update_product():
-    product_id = input("Enter Product ID to update: ")
-    if product_id not in products:
-        print("Product not found.\n")
+def update_material():
+    material_id = input("Enter material ID to update: ")
+    if material_id not in materials:
+        print("material not found.\n")
         return
     name = input("Enter New Product Name: ")
     price = float(input("Enter New Price: "))
@@ -40,7 +40,7 @@ def update_product():
     print("Product updated successfully.\n")
 
 # Delete product
-def delete_product():
+def delete_material():
     product_id = input("Enter Product ID to delete: ")
     if product_id in products:
         del products[product_id]
@@ -49,7 +49,7 @@ def delete_product():
         print("Product not found.\n")
 
 # Purchase/Bill generation
-def purchase_products():
+def purchase_material():
     if not products:
         print("No products available for purchase.\n")
         return
